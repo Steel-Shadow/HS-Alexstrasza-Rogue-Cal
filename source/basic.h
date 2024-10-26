@@ -1,6 +1,15 @@
 #pragma once
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
+#include <map>
+#include <iostream>
+#include <cstdarg>
+#include <cassert>
+#include <algorithm>
+#include <cmath>
+#include <ctime>
+
 #define rep(i,l,r) for(int i=l;i<=r;i++)
 typedef long long ll;
 typedef unsigned long long ull;
@@ -8,12 +17,20 @@ using namespace std;
 enum cardname {
 	shadowstep, backstab, fakecoin, preparation, illusionpotion, sharkspirit, foxyfraud, mailboxdancer, cutterbutter, redsmoke, spectralpillager,
 	anyminion, anyspell, invalid, anyweapon, anycombospell, bonespike, elvensinger, shroud, extortion, swindle, shadowcaster, illucia, brann, zolag,
-	madnessplague, heroattack, demise
+	madnessplague, heroattack, demise,
 	//heroattack归入牌名
+
+	alexstrasza, // 红龙
+	ETC, // 乐队经理精英牛头人酋长
+
+	bounceAround, // 舞动全场（ft.迦罗娜）
 };
 enum minionname {
 	sharkspirit_m, foxyfraud_m, mailboxdancer_m, cutterbutter_m, redsmoke_m, spectralpillager_m,
-	anyminion_m, enemyhero, enemyminion, nul, elvensinger_m, shadowcaster_m, illucia_m, brann_m, zolag_m, sharkspirit_mx
+	anyminion_m, enemyhero, enemyminion, nul, elvensinger_m, shadowcaster_m, illucia_m, brann_m, zolag_m, sharkspirit_mx,
+
+	alexstrasza_m,
+	ETC_m,
 	//敌方英雄-可以是鬼灵匪贼的目标
 	//敌方随从-可以是背刺的目标（尽管目前背刺/骨刺敌方随从会归为空目标）
 	//空目标
@@ -21,80 +38,17 @@ enum minionname {
 };
 
 //每当新加一种牌名
-//1. 修改basic.h和basic.cpp中的定义信息，基础费用信息，中英文牌名信息
+//1. 修改 deck.cpp 的 dbfid2cid 卡组代码
+//	basic.h basic.cpp 中的定义信息，基础费用信息
+//	language.h language.cpp 中英文牌名信息
 //	如果是随从还需要修改随从-牌名转换信息(cn2mn,normalminion)，基础血量信息
 //  如果是法术也需要指出是一张常规法术(normalspell)
 //2. 修改offer.cpp和trans.cpp中的操作可行判定以及操作造成的状态变化
 //3. 修改ui.cpp中的UI入口和auto.cpp中的自动入口
 //（4. 对于具有自动入口，且需要从初始套牌中识别的，修改deck.cpp中的识别）
 
-enum lang {
-	CN, EN
-};
-extern lang _lang;
-string shak_s();
-string shxk_s();
-string foxy_s();
-string mail_s();
-string scab_s();
-string tenw_s();
-string cast_s();
-string pill_s();
-string elvn_s();
-string anym_s();
-string face_s();
-string step_s();
-string stab_s();
-string si7_s();
-string coin_s();
-string prep_s();
-string pshn_s();
-string anys_s();
-string trsh_s();
-string anyw_s();
-string cmbs_s();
-string bone_s();
-string shrd_s();
-string swin_s();
-string iuca_s();
-string bran_s();
-string zola_s();
-string plag_s();
-string clr_s();
-string mana_s();
-string calc_s();
-string randc_s();
-string time_s();
-string targ_s();
-string adpt_s();
-string chng_s();
-string read_s();
-string back_s();
-string stax_s();
-string mtax_s();
-string btax_s();
-string able_s();
-string able2_s();
-string plyd_s();
-string samp_s();
-string cl_s();
-string a0_s();
-string a1_s();
-string a2_s();
-string a3_s();
-string hint_s();
-string calcing_s();
-string exhaust_s();
-string targrch_s();
-string timerch_s();
-string iceblock_s();
-string heroattk_s();
-string demi_s();
-string smal_s();
-string larg_s();
+#include "language.h"
 
-string mn2str(minionname a);
-string cn2str(cardname a);
 cardname mn2cn(minionname a);
 minionname cn2mn(cardname a);
 bool normalminion(cardname a);

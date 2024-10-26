@@ -1,3 +1,0 @@
-/mnt/c/Users/Moiez/Desktop/HS_SPR_CAL/buildl/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Moiez/Desktop/HS_SPR_CAL/buildl/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Moiez/Desktop/HS_SPR_CAL/buildl/CMakeFiles/HSSPRCAL.dir

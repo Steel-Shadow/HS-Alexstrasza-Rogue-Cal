@@ -60,6 +60,11 @@ string dbfid2cid(int x) {
     if (x == 69863) return "VAN_EX1_144";
     if (x == 69864) return "VAN_EX1_145";
     if (x == 63358) return "WC_016";
+
+    if (x == 113183) return "LEG_CS3_031";
+    if (x == 90749) return "ETC_080";
+    if (x == 90606) return "ETC_079";
+
     return "";
 }
 

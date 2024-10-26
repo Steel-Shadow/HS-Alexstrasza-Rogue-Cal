@@ -615,5 +615,6 @@ pair<state, int> trans(state st, oxy ox) {
 			break;
 		}
 	}
+	// TODO: 在这里计算伤害
 	return make_pair(st, dmg);
 }

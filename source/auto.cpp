@@ -40,38 +40,16 @@ cardname cid2cn(string s) {
 	if (s == "DMF_512") return anyspell;
 	if (s == "LOOT_204") return anyspell;
 	if (s == "RLK_567") return demise;
+
+	if (s=="LEG_CS3_031") return alexstrasza;
+	if (s=="ETC_080") return ETC;
+	if (s=="ETC_079") return bounceAround;
 	return invalid;
 }
 
-int cid2oc(string s) {
-	if (s.find("EX1_144") != -1) return 0;
-	if (s.find("CS2_072") != -1) return 0;
-	if (s == "SW_412") return 1;
-	if (s == "REV_939") return 2;
-	if (s.find("COIN") != -1) return 0;
-	if (s == "GAME_005") return 0;
-	if (s == "CFM_630") return 0;
-	if (s.find("EX1_145") != -1) return 0;
-	if (s == "SCH_352") return 4;
-	if (s == "TRL_092") return 4;
-	if (s == "DMF_511") return 2;
-	if (s == "SW_070") return 2;
-	if (s == "BAR_552") return 4;
-	if (s == "DMF_071") return 2;
-	if (s == "OG_291") return 5;
-	if (s.find("ICC_910") != -1) return 6;
-	if (s == "LOOT_211") return 4;
-	if (s.find("REV_938") != -1) return 1;
-	if (s == "TSC_916") return 1;
-	if (s == "ULD_715") return 1;
-	if (s == "DED_004") return 1;
-	if (s == "DMF_515") return 2;
-	if (s == "WC_016") return 3;
-	if (s == "REV_825") return 2;
-	if (s == "LOOT_214") return 2;
-	if (s == "DMF_512") return 4;
-	if (s == "LOOT_204") return 2;
-	if (s == "RLK_567") return 0;
+int cid2oc(const string& s) {
+	// ¼ò»¯Ô­ÓÐÈßÓàÂß¼­
+	return originalcost_c(cid2cn(s));
 	return 0;
 }
 
