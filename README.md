@@ -1,18 +1,43 @@
-# 迭代开发注意
+# HS-Alexstrasza-Rogue-Cal
 
-- 看 TODO，修改伤害计算方式
-- 使用EGEtools.zip，修改UI
-- 添加卡牌 basic.h
-- 弄清楚 hash，疑似是存储已找到的解？
+Hearthstone Alexstrasza Rogue Calculator
 
-每当新加一种牌名
+炉石~~鬼灵贼~~红龙贼计算器 持续更新中（或许吧？）
 
-1. 修改basic.h和basic.cpp中的定义信息，基础费用信息，中英文牌名信息
+本项目 fork 自 [原鬼灵计算器](https://github.com/Moiezen/HS_SPR_CAL)。
+在此向原作者表达感激，完成了大量的工作，本人只不过是在原作的基础上进行了极为有限的修改。
+
+## 开发需知
+
+EGE 是原项目使用的 UI 库，已经放在了 include 和 lib 目录中，并且配置好了 cmake。
+
+当前的开发环境为 windows + mingw。当然你也可以改为 visual studio（就像原作者那样）。
+
+## 项目修改 TODO
+
+### 优化
+
+弄清楚 hash，疑似是存储已找到的解？
+
+### 添加卡牌流程
+
+1. 修改 deck.cpp 的 dbfid2cid 卡组代码
+   basic.h basic.cpp 中的定义信息，基础费用信息
+   language.h language.cpp 中英文牌名信息
    如果是随从还需要修改随从-牌名转换信息(cn2mn,normalminion)，基础血量信息
    如果是法术也需要指出是一张常规法术(normalspell)
-2. 修改offer.cpp和trans.cpp中的操作可行判定以及操作造成的状态变化
+2. 修改offer.cpp：操作枚举 trans.cpp：操作造成的状态变化
 3. 修改ui.cpp中的UI入口和auto.cpp中的自动入口
    （4. 对于具有自动入口，且需要从初始套牌中识别的，修改deck.cpp中的识别）
+
+### code style 修改
+
+- 项目需要修改命名
+- 考虑修改 construct 的写法
+
+## 卡组参考
+
+这里给出卡组参考代码。当然可以修改构筑。
 
 ```text
 ### 红龙贼
@@ -48,10 +73,7 @@ AAEBAZvDAwjcrwK0hgPf3QOd8APMoAX9xAXIlAbungYL9bsC3+MC590D/u4DvYAE9p8E958Et7ME9N0E
 
 ```
 
-# HS_SPR_CAL
-
-Hearthstone Spectral Pillager Rogue Calculator
-炉石鬼灵贼计算器 持续更新中
+## 下面是原有的说明文档
 
 **写在最前面**：官方插件可以记牌，可以计算场攻，可以算酒馆战棋对战胜率。HDT插件还可以在酒馆战棋决赛时计算不同站位的胜率（假设对手阵容不变）。这个计算器可以计算鬼灵贼的斩杀方式。这些都是计算，没有区别。
 

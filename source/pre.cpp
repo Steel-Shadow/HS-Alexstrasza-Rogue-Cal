@@ -2,6 +2,8 @@
 #include "solve.h"
 #include "gen.h"
 
+// TODO: 这里疑似是使用 Linux 跑随机，然后存储 hash 到 fml.txt，使用时再读取
+// TODO: 是否有必要存储读取？这么做的具体细节？会不会太吃内存？
 void Coll() {
 	srand(1);
 

@@ -2,7 +2,7 @@
 
 set(CMAKE_CXX_STANDARD 17)
 
-project("HSSPRCAL")
+project("HS-Alexstrasza-Rogue-Cal")
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     add_definitions(-DWindows)

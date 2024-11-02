@@ -89,7 +89,7 @@ color_t txc = EGERGB(0, 0, 255);
 int H = 640;
 int W = 1280;
 
-std::string caption_s = "·«·«Ğ¡ÌğĞÄ.20230104";
+std::string caption_s = "ºìÁúÔô¼ÆËãÆ÷";
 
 void init() {
 	initgraph(W, H);
