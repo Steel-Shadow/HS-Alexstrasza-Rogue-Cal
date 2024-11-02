@@ -2,4 +2,4 @@
 
 #include "basic.h"
 
-string adaptlk();
+std::string adaptlk();

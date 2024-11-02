@@ -20,8 +20,8 @@ int char2u6(char c) {
     return 0;
 }
 
-string plainu6(int x) {
-    string s = "";
+std::string plainu6(int x) {
+    std::string s = "";
     rep(i, 0, 5) {
         s = char(x % 2 + 48) + s;
         x /= 2;
@@ -29,7 +29,7 @@ string plainu6(int x) {
     return s;
 }
 
-string dbfid2cid(int x) {
+std::string dbfid2cid(int x) {
     if (x == 63517) return "BAR_552";
     if (x == 40437) return "CFM_630";
     if (x == 69521) return "CORE_CS2_072";
@@ -70,12 +70,12 @@ string dbfid2cid(int x) {
 
 int nums[99], nn;
 
-vector<string> deckcode2cids(string s) {
-    vector<string> cids;
+std::vector<std::string> deckcode2cids(std::string s) {
+    std::vector<std::string> cids;
     cids.clear();
 
     int l = s.length();
-    string t = "";
+    std::string t = "";
     rep(i, 0, l - 1) t = t + plainu6(char2u6(s[i]));
 
     int l2 = t.length();
@@ -107,16 +107,16 @@ vector<string> deckcode2cids(string s) {
     return cids;
 }
 
-void parsedeck(string _s) {
-    cin.clear();
+void parsedeck(std::string _s) {
+    std::cin.clear();
     //重置输入流，防止无法读取 
 
     FILE* f = freopen((_s + "\\Logs\\decks.log").c_str(), "r", stdin);
 
-    string line;
-    string code;
+    std::string line;
+    std::string code;
 
-    while (getline(cin, line)) {
+    while (getline(std::cin, line)) {
         code = line;
     }
 
@@ -127,7 +127,7 @@ void parsedeck(string _s) {
 
     code = code.substr(p);
 
-    vector<string> cids = deckcode2cids(code);
+    std::vector<std::string> cids = deckcode2cids(code);
     deckmn = 0;
     for (auto cid : cids) {
         cardname c = cid2cn(cid);

@@ -12,4 +12,4 @@ ull ishash(int l, int r, int* s) {
 	}
 	return t;
 }
-map<ull, double> value;
+std::map<ull, double> value;

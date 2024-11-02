@@ -13,7 +13,6 @@
 #define rep(i,l,r) for(int i=l;i<=r;i++)
 typedef long long ll;
 typedef unsigned long long ull;
-using namespace std;
 enum cardname {
 	shadowstep, backstab, fakecoin, preparation, illusionpotion, sharkspirit, foxyfraud, mailboxdancer, cutterbutter, redsmoke, spectralpillager,
 	anyminion, anyspell, invalid, anyweapon, anycombospell, bonespike, elvensinger, shroud, extortion, swindle, shadowcaster, illucia, brann, zolag,
@@ -119,7 +118,7 @@ ope exact(state a, oxy b);
 ope exact4f(state a, oxy b);
 
 struct oxys {
-	vector<oxy> os;
+	std::vector<oxy> os;
 	~oxys() {
 		os.clear();
 	}
@@ -128,7 +127,7 @@ oxys emptyoxyscons();
 extern oxys emptyoxys;
 
 struct opes {
-	vector<ope> os;
+	std::vector<ope> os;
 	~opes() {
 		os.clear();
 	}
@@ -159,6 +158,6 @@ struct quiz {
 quiz emptyqcons();
 
 const int dmgbd = 10;
-extern vector<quiz> quizs;
-extern vector<opes> cls;
-extern vector<opes> allcls;
+extern std::vector<quiz> quizs;
+extern std::vector<opes> cls;
+extern std::vector<opes> allcls;

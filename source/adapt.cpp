@@ -36,9 +36,9 @@ void getroute() {
     CloseHandle(processHandle);
 }
 
-string adaptlk() {
+std::string adaptlk() {
     getroute();
-    string temp = filename;
+    std::string temp = filename;
     auto p = temp.find(target_hs_);
     if (p != -1) temp = temp.substr(0, p);
     return temp;

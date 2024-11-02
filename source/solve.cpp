@@ -5,7 +5,7 @@
 #include "solve.h"
 #include "ui.h"
 
-syn syncons(pair<state, int> a, double b, opes c) {
+syn syncons(std::pair<state, int> a, double b, opes c) {
 	syn d;
 	d.pa = a;
 	d.pri = b;
@@ -53,7 +53,7 @@ ull statehash(state a) {
 	return h;
 }
 
-map<ull, int> st2hidmg;
+std::map<ull, int> st2hidmg;
 int st2hidmgcountlim = (1 << 21);
 int st2hidmgcount = 0;
 int allcount = 0;
@@ -110,7 +110,7 @@ void solve(syn q) {
 
 	oxys o0 = offer(q.pa.first);
 
-	vector<double> sums;
+	std::vector<double> sums;
 	double sum, allsum, lost;
 
 	if (optimize == 1) {
@@ -144,19 +144,19 @@ void solve(syn q) {
 		}
 
 		if (optimize == 1 && pureformula == 1 && sum - sumbasic < 1e-6) {
-			//cerr<<sums[j-1]<<" "<<allsum<<endl;
-			//cerr<<lost<<endl;
+			//std::cerr<<sums[j-1]<<" "<<allsum<<std::endl;
+			//std::cerr<<lost<<std::endl;
 		}
 		else {
-			pair<state, int> p = trans(q.pa.first, i); if (test == 1) testcnt++;
-			solve(syncons(make_pair(p.first, q.pa.second + p.second), q.pri + lost, os));
+			std::pair<state, int> p = trans(q.pa.first, i); if (test == 1) testcnt++;
+			solve(syncons(std::make_pair(p.first, q.pa.second + p.second), q.pri + lost, os));
 			if (done > 0) return;
 		}
 
 	}
 }
 
-string _solve(state st, int _need, int _tlim, int _collect, int _addquiz, int _print, int _exbound, int _optimize, int _pureformula, int _test) {
+std::string _solve(state st, int _need, int _tlim, int _collect, int _addquiz, int _print, int _exbound, int _optimize, int _pureformula, int _test) {
 	if (_need < _tar_max && _collect == 1) assert(0);
 	//同时开启需求截断和收集会污染数据 
 
@@ -188,12 +188,12 @@ string _solve(state st, int _need, int _tlim, int _collect, int _addquiz, int _p
 
 	if (exbound == 0) {
 		bound = 1e9;
-		solve(syncons(make_pair(st, 0), 0, emptyopes));
+		solve(syncons(std::make_pair(st, 0), 0, emptyopes));
 	}
 	if (exbound == 1) {
 		bound = -boundbasic;
 		bounded = 0;
-		solve(syncons(make_pair(st, 0), 0, emptyopes));
+		solve(syncons(std::make_pair(st, 0), 0, emptyopes));
 
 		while (done == 0 && bounded == 1) {
 			st2hidmg.clear();
@@ -202,7 +202,7 @@ string _solve(state st, int _need, int _tlim, int _collect, int _addquiz, int _p
 
 			bound -= boundbasic;
 			bounded = 0;
-			solve(syncons(make_pair(st, 0), 0, emptyopes));
+			solve(syncons(std::make_pair(st, 0), 0, emptyopes));
 		}
 	}
 

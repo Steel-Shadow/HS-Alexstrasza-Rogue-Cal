@@ -3,7 +3,7 @@
 int getrand(int count, ...) {
 	va_list v;
 	int valuet;
-	vector<int> value;
+	std::vector<int> value;
 	int sum = 0;
 
 	va_start(v, count);
@@ -57,8 +57,8 @@ state gen(int m) {
 	madd(getrand(3, 3, 2, 1), cardcons(preparation, 0));
 	madd(getrand(2, 1, 1), cardcons(anyspell, 1));
 
-	random_shuffle(ctmp, ctmp + cT);
-	st.H = min(cT, hlim);
+	std::random_shuffle(ctmp, ctmp + cT);
+	st.H = std::min(cT, hlim);
 	rep(i, 0, st.H - 1) {
 		st.hands[i] = ctmp[i];
 	}

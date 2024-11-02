@@ -1,14 +1,17 @@
+#include <iostream>
+#include <filesystem>
+#include <string>
 #include "deck.h"
 #include "auto.h"
 
-int cid2secret(string s) {
+int cid2secret(std::string s) {
 	if (s == "REV_825") return 0;
 	if (s == "LOOT_214") return 1;
 	if (s == "LOOT_204") return 2;
 	return -1;
 }
 
-cardname cid2cn(string s) {
+cardname cid2cn(std::string s) {
 	if (s.find("EX1_144") != -1) return shadowstep;
 	if (s.find("CS2_072") != -1) return backstab;
 	if (s == "SW_412") return extortion;
@@ -47,38 +50,38 @@ cardname cid2cn(string s) {
 	return invalid;
 }
 
-int cid2oc(const string& s) {
+int cid2oc(const std::string& s) {
 	// 简化原有冗余逻辑
 	return originalcost_c(cid2cn(s));
 	return 0;
 }
 
-string idhandle[4] = {
+std::string idhandle[4] = {
 	" id=",
 	" ID=",
 	" Entity=",
 	" EntityID="
 };
 
-string pidhandle = " PlayerID=";
-string namehandle = " PlayerName=";
+std::string pidhandle = " PlayerID=";
+std::string namehandle = " PlayerName=";
 
 int mycid = -1;
 int myid = -1;
 int mypid = -1;
-string myname;
+std::string myname;
 int myhid = -1;
 
 int yourcid = -1;
 int yourid = -1;
 int yourpid = -1;
-string yourname;
+std::string yourname;
 int yourhid = -1;
 
 const int Gid = 1;
-const string Gname = "GameEntity";
+const std::string Gname = "GameEntity";
 
-map<int, map<string, pair<int, string>  > > id2tag2stampandvalue;
+std::map<int, std::map<std::string, std::pair<int, std::string>  > > id2tag2stampandvalue;
 int stampcnt;
 
 void updid(int x) {
@@ -115,11 +118,11 @@ void updid(int x) {
 	}
 }
 
-void updname(string s) {
+void updname(std::string s) {
 	auto p = s.find(namehandle);
 	if (p != -1) {
 		p = p + namehandle.length();
-		string t = s.substr(p);
+		std::string t = s.substr(p);
 		p = t.find(" ");
 		if (p != -1) {
 			t = t.substr(0, p - 1);
@@ -136,7 +139,7 @@ void updname(string s) {
 	}
 }
 
-int updcurid(string s, int x) {
+int updcurid(std::string s, int x) {
 	rep(i, 0, 3) {
 		if (s.find(idhandle[i] + Gname) != -1) {
 			return Gid;
@@ -162,26 +165,51 @@ int updcurid(string s, int x) {
 	return x;
 }
 
-map<int, int> id2initialcontroller;
-map<int, string> id2initialcardid;
+std::map<int, int> id2initialcontroller;
+std::map<int, std::string> id2initialcardid;
 
-map<int, int> id2handpos;
+std::map<int, int> id2handpos;
 
-vector<string> valids;
+std::vector<std::string> valids;
 
-state autoread(string _s, int& _tar, int& countslimit) {
-	cin.clear();
-	//重置输入流，防止无法读取 
+// std::string findMaxLexicographicDirectory(const std::std::string& directoryPath) {
+// 	namespace fs = std::filesystem;
+//     std::std::string maxDirName;
+//
+//     // 检查路径是否存在并且是目录
+//     if (!fs::exists(directoryPath) || !fs::is_directory(directoryPath)) {
+//         std::std::cerr << "The provided path is not a valid directory." << std::std::endl;
+//         return "";
+//     }
+//
+//     // 遍历目录中的每个文件和文件夹
+//     for (const auto& entry : fs::directory_iterator(directoryPath)) {
+//         if (entry.is_directory()) {
+//             std::std::string dirName = entry.path().filename().std::string();
+//
+//             // 更新最大字典序文件夹名
+//             if (dirName > maxDirName) {
+//                 maxDirName = dirName;
+//             }
+//         }
+//     }
+//
+//     return maxDirName;
+// }
+
+state autoread(std::string _s, int& _tar, int& countslimit) {
+	std::cin.clear();
+	//重置输入流，防止无法读取
 
 	FILE* f = freopen((_s + "\\Logs\\power.log").c_str(), "r", stdin);
 
-	string __s;
+	std::string __s;
 
 	valids.clear();
 
 	int counts = 0;
 
-	while (getline(cin, __s)) {
+	while (getline(std::cin, __s)) {
 		if (__s.find("GameState.DebugPrintOptions() - id") != -1) counts++;
 		if (counts >= countslimit) break;
 
@@ -198,7 +226,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 	//将唯一有效段存至valids，以下仅对这段进行读取
 
 	int curid = 0;
-	string t, u, v, lu, lv;
+	std::string t, u, v, lu, lv;
 
 	for (auto s : valids) {
 		if (s.find("- CREATE_GAME") != -1) {
@@ -232,7 +260,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 		curid = updcurid(s, curid);
 
 		while (s.length() > 0) {
-			auto p = min(min(s.find("["), s.find("]")), s.find(" "));
+			auto p = std::min(std::min(s.find("["), s.find("]")), s.find(" "));
 			if (p != -1) {
 				t = s.substr(0, p);
 				s = s.substr(p + 1);
@@ -252,7 +280,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 					lv = "";
 				}
 
-				id2tag2stampandvalue[curid][u] = make_pair(stampcnt++, v);
+				id2tag2stampandvalue[curid][u] = std::make_pair(stampcnt++, v);
 
 				if (u == "CONTROLLER" && id2initialcontroller[curid] == 0) {
 					id2initialcontroller[curid] = atoi(v.c_str());
@@ -272,7 +300,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 	//读取完毕，开始转化
 
 	state autost = emptyst;
-	
+
 	stabable = 0;
 	boneable = 0;
 	spelldebuff = 0;
@@ -297,16 +325,16 @@ state autoread(string _s, int& _tar, int& countslimit) {
 	for (auto i : id2tag2stampandvalue) {
 		auto j = i.second;
 
-		if (j["ZONE"].second == "SECRET" && j["CONTROLLER"].second == to_string(mycid)) {
-			string cid = j["CardID"].second;
+		if (j["ZONE"].second == "SECRET" && j["CONTROLLER"].second == std::to_string(mycid)) {
+			std::string cid = j["CardID"].second;
 			int d = cid2secret(cid);
 			if (d >= 0) {
 				secretcheapest[d] = -999;
 			}
 		}
 
-		if (j["ZONE"].second == "HAND" && j["CONTROLLER"].second == to_string(mycid)) {
-			string cid = j["CardID"].second;
+		if (j["ZONE"].second == "HAND" && j["CONTROLLER"].second == std::to_string(mycid)) {
+			std::string cid = j["CardID"].second;
 			cardname a = cid2cn(cid);
 			int b = cid2oc(cid);
 			int c = atoi(j["HEALTH"].second.c_str());
@@ -320,7 +348,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 			handsecret[p - 1] = d;
 		}
 
-		if (j["ZONE"].second == "PLAY" && j["CARDTYPE"].second == "MINION" && j["CONTROLLER"].second == to_string(mycid)) {
+		if (j["ZONE"].second == "PLAY" && j["CARDTYPE"].second == "MINION" && j["CONTROLLER"].second == std::to_string(mycid)) {
 			minionname a = cn2mn(cid2cn(j["CardID"].second));
 			int b = atoi(j["HEALTH"].second.c_str());
 			int c = atoi(j["DAMAGE"].second.c_str());
@@ -336,8 +364,8 @@ state autoread(string _s, int& _tar, int& countslimit) {
 			autost.F++;
 		}
 
-		if (j["ZONE"].second == "PLAY" && j["CARDTYPE"].second == "MINION" && j["CONTROLLER"].second == to_string(yourcid)) {
-			string cid = j["CardID"].second;
+		if (j["ZONE"].second == "PLAY" && j["CARDTYPE"].second == "MINION" && j["CONTROLLER"].second == std::to_string(yourcid)) {
+			std::string cid = j["CardID"].second;
 			if (cid == "FP1_017") {
 				battlecrydebuff += 2;
 			}
@@ -371,8 +399,8 @@ state autoread(string _s, int& _tar, int& countslimit) {
 		}
 
 		if (j["ZONE"].second == "PLAY" && j["CARDTYPE"].second == "ENCHANTMENT") {
-			string buff = j["CardID"].second;
-			if (j["ATTACHED"].second == to_string(myid)) {
+			std::string buff = j["CardID"].second;
+			if (j["ATTACHED"].second == std::to_string(myid)) {
 				if (buff == "EX1_145o") {
 					autost.auras[0] += 1;
 				}
@@ -464,8 +492,8 @@ state autoread(string _s, int& _tar, int& countslimit) {
 			}
 		}
 
-		if (i.first <= myhid && id2initialcontroller[i.first] == mycid && (j["ZONE"].second != "DECK" || j["CONTROLLER"].second != to_string(mycid))) {
-			string cid = id2initialcardid[i.first];
+		if (i.first <= myhid && id2initialcontroller[i.first] == mycid && (j["ZONE"].second != "DECK" || j["CONTROLLER"].second != std::to_string(mycid))) {
+			std::string cid = id2initialcardid[i.first];
 			cardname c = cid2cn(cid);
 			if (normalminion(c)) {
 				notindeck[nidn++] = cn2mn(c);
@@ -477,7 +505,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 		int c = autost.hands[i].cost;
 		int d = handsecret[i];
 		if (d >= 0) {
-			secretcheapest[d] = min(secretcheapest[d], c);
+			secretcheapest[d] = std::min(secretcheapest[d], c);
 		}
 	}
 
@@ -505,7 +533,7 @@ state autoread(string _s, int& _tar, int& countslimit) {
 	autost.drawmn = 0;
 
 	autost.hatk = atoi(id2tag2stampandvalue[myhid]["ATK"].second.c_str());
-		
+
 	if (oppotaunt == 1
 		|| atoi(id2tag2stampandvalue[myhid]["NUM_ATTACKS_THIS_TURN"].second.c_str()) > 0
 		|| atoi(id2tag2stampandvalue[myhid]["FROZEN"].second.c_str()) > 0

@@ -35,12 +35,12 @@ void rectr(rect a, color_t b) {
 	setc(b);
 	rectangle(a.x1, a.y1, a.x2, a.y2);
 }
-void textr(rect a, color_t b, string c) {
+void textr(rect a, color_t b, std::string c) {
 	setc(b);
 	sett(CENTER_TEXT, CENTER_TEXT);
 	outtextxy((a.x1 + a.x2) / 2, (a.y1 + a.y2) / 2, c.c_str());
 }
-void textra(rect a, color_t b, string c) {
+void textra(rect a, color_t b, std::string c) {
 	setc(b);
 	sett(LEFT_TEXT, TOP_TEXT);
 	int xx = a.x1 + 5, yy = a.y1 + 5;
@@ -65,13 +65,13 @@ enum domt {
 struct domain {
 	rect r;
 	domt type;
-	string name;
+	std::string name;
 	int x;
 	int id;
 	int key;
 	int lim;
 };
-domain domaincons(rect a, domt b, string c, int d, int e, int f, int g) {
+domain domaincons(rect a, domt b, std::string c, int d, int e, int f, int g) {
 	domain dom;
 	dom.r = a; dom.type = b; dom.name = c; dom.x = d; dom.id = e; dom.key = f; dom.lim = g;
 	return dom;
@@ -89,7 +89,7 @@ color_t txc = EGERGB(0, 0, 255);
 int H = 640;
 int W = 1280;
 
-string caption_s = "帆帆小甜心.20230104";
+std::string caption_s = "帆帆小甜心.20230104";
 
 void init() {
 	initgraph(W, H);
@@ -133,7 +133,7 @@ void attention() {
 	}
 }
 
-vector<domain> doms;
+std::vector<domain> doms;
 domain selected;
 bool inputing;
 
@@ -172,21 +172,21 @@ domain id2dom(int id) {
 	return nodomain;
 }
 
-string getdftlk() {
-	cin.clear();
+std::string getdftlk() {
+	std::cin.clear();
 	//重置输入流，防止无法读取 
 
 	FILE* f = freopen("dft.txt", "r", stdin);
 
-	string s;
-	getline(cin, s);
+	std::string s;
+	getline(std::cin, s);
 
 	fclose(stdin);
 
 	return s;
 }
 
-void savedftlk(string s) {
+void savedftlk(std::string s) {
 	FILE* f = freopen("dft.txt", "w", stdout);
 
 	printf("%s\n", s.c_str());
@@ -199,14 +199,14 @@ int k1[countn] = { 'Y','L','X','D','G','E','T','A','B','C','J','S','H','W',-1,-1
 void getdoms() {
 	doms.clear();
 
-	string n1[countn] = {
+	std::string n1[countn] = {
 		shak_s(), foxy_s(), mail_s(), scab_s(), pill_s(), elvn_s(), tenw_s(),
 		step_s(), stab_s(), bone_s(), coin_s(), prep_s(), pshn_s(), shrd_s(),
 		anym_s(), anys_s(), trsh_s(), anyw_s(), cmbs_s(), si7_s(), swin_s(),
 		shxk_s(), cast_s(), iuca_s(), bran_s(), zola_s(), plag_s(), demi_s(), clr_s()
 	};
 
-	string a1[4] = { a0_s(), a1_s(), a2_s(), a3_s() };
+	std::string a1[4] = { a0_s(), a1_s(), a2_s(), a3_s() };
 
 	adddd(920, 600, 980, 640, vx, mana_s(), 0, manadomid = 1, -1, 10);
 	//1
@@ -239,7 +239,7 @@ void getdoms() {
 	//39
 	adddd(1120, 600, 1180, 640, vx, targ_s(), 30, tardomid = 40, -1, 999);
 	//40
-	string dftlk = getdftlk();
+	std::string dftlk = getdftlk();
 	adddd(0, 0, 400, 40, lk, dftlk, 0, lkdomid = 41, -1, -1);
 	//41
 	adddd(400, 0, 440, 40, lk0, adpt_s(), 0, 42, -1, -1);
@@ -276,7 +276,7 @@ void getdoms() {
 	//83
 }
 
-cardname str2cn(string s) {
+cardname str2cn(std::string s) {
 	if (s == step_s()) return shadowstep;
 	if (s == stab_s()) return backstab;
 	if (s == si7_s()) return extortion;
@@ -307,7 +307,7 @@ cardname str2cn(string s) {
  	return invalid;
 }
 
-minionname str2mn(string s) {
+minionname str2mn(std::string s) {
 	if (s == shxk_s()) {
 		return sharkspirit_mx;
 	}
@@ -343,16 +343,16 @@ void drawdom(domain a, bool sl) {
 		}
 		case vnx: {
 			if (a.name == clr_s()) textr(r, txc, "");
-			else textr(r, txc, a.name + to_string(a.x));
+			else textr(r, txc, a.name + std::to_string(a.x));
 			break;
 		}
 		case vx: {
-			textr(r, txc, a.name + to_string(a.x));
+			textr(r, txc, a.name + std::to_string(a.x));
 			break;
 		}
 		case vx0: {
 			if (a.x == 0) textr(r, txc, "");
-			else textr(r, txc, a.name + to_string(a.x));
+			else textr(r, txc, a.name + std::to_string(a.x));
 			break;
 		}
 		case vn: {
@@ -377,7 +377,7 @@ void drawdom(domain a, bool sl) {
 			break;
 		}
 		case cx: {
-			textr(r, txc, to_string(a.x));
+			textr(r, txc, std::to_string(a.x));
 			break;
 		}
 		case ans: {
@@ -488,7 +488,7 @@ state doms2st() {
 	}
 
 	rep(i, 0, 3) {
-		st.auras[i] = min(id2dom(aurasdomid[i]).x, alim[i]);
+		st.auras[i] = std::min(id2dom(aurasdomid[i]).x, alim[i]);
 	}
 
 	st.mana = id2dom(manadomid).x;
@@ -615,24 +615,24 @@ void st2doms(state st) {
 	drawfixdom(tmp);
 }
 
-bool legalstr2cn4vn(string s) {
+bool legalstr2cn4vn(std::string s) {
 	if (s == clr_s()) return true;
 	if (s == shxk_s()) return true;
 	if (normalminion(str2cn(s))) return true;
 	return false;
 }
 
-bool legalstr2cn4vnx(string s) {
+bool legalstr2cn4vnx(std::string s) {
 	return not (s == shxk_s());
 }
 
-bool legalstr2cn4vn_demi(string s) {
+bool legalstr2cn4vn_demi(std::string s) {
 	if (s == clr_s()) return true;
 	if (normalspell(str2cn(s))) return true;
 	return false;
 }
 
-void refreshans(string _s) {
+void refreshans(std::string _s) {
 	domain tmp = id2dom(ansdomid);
 	tmp.name = _s;
 	drawfixdom(tmp);
@@ -805,7 +805,7 @@ void touch(domain toselect) {
 				}
 				inputing = true;
 
-				selected.x = min(selected.x * 10 + toselect.x, selected.lim);
+				selected.x = std::min(selected.x * 10 + toselect.x, selected.lim);
 				drawfixdom(selected, 1);
 			}
 			break;
@@ -843,7 +843,7 @@ void touch(domain toselect) {
 		case lk0: {
 			inputing = false;
 
-			string _lk = adaptlk();
+			std::string _lk = adaptlk();
 			domain tmp = id2dom(lkdomid);
 			if (_lk.length() == 0) break;
 			tmp.name = _lk;
@@ -918,7 +918,7 @@ void click(int x, int y) {
 
 void press(int k) {
 	//rect a = rectcons(610, 0, 670, 40);
-	//textr(a, txc, to_string(k));
+	//textr(a, txc, std::to_string(k));
 
 	if (k == 37) {
 		k = selected.key - 1000;

@@ -2,4 +2,4 @@
 
 #include "basic.h"
 
-void parsedeck(string s);
+void parsedeck(std::string s);

@@ -517,7 +517,7 @@ quiz emptyqcons() {
 	q.qnd = 0;
 	return q;
 }
-vector<quiz> quizs;
+std::vector<quiz> quizs;
 
-vector<opes> cls;
-vector<opes> allcls;
+std::vector<opes> cls;
+std::vector<opes> allcls;

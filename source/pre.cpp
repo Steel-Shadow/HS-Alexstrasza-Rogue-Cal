@@ -12,13 +12,13 @@ void Coll() {
 		state st = gen(i);
 		_solve(st, _tar_max, 15, 1, 0, 0, 0, 0, 0, 1);
 		if (done == 0) S++; T++;
-		cerr << "now " << S << " of " << T << endl;
+		std::cerr << "now " << S << " of " << T << std::endl;
 	}
 
 	value.clear();
 
 	for (auto i : allcls) {
-		vector<ope> a = i.os;
+		std::vector<ope> a = i.os;
 
 		isn = 0;
 		for (auto j : a) {
@@ -70,7 +70,7 @@ void Genq() {
 		state st = gen(i);
 		_solve(st, _tar_max, 15, 0, 1, 0, 0, 0, 0, 1);
 		if (done == 0) S++; T++;
-		cerr << "now " << S << " of " << T << endl;
+		std::cerr << "now " << S << " of " << T << std::endl;
 	}
 
 	FILE* f = freopen("qiz.txt", "w", stdout);
@@ -174,13 +174,13 @@ void Test(int term) {
 		alltestcnt += testcnt;
 		solvecnt += (done == 1);
 	}
-	cerr << ";;;" << solvecnt << ";;;" << alltestcnt << endl;
+	std::cerr << ";;;" << solvecnt << ";;;" << alltestcnt << std::endl;
 }
 
 void pre_main() {
 	Coll();
 	Genq();
 
-	//Load(); cerr << "load complete" << endl;
-	//Getq(); cerr << "getq complete" << endl;
+	//Load(); std::cerr << "load complete" << std::endl;
+	//Getq(); std::cerr << "getq complete" << std::endl;
 }	

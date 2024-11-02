@@ -13,7 +13,7 @@ void rmvf(minion* a, int& n, int x) {
 	n--;
 }
 
-pair<state, int> badpair = make_pair(emptyst, badpair_min);
+std::pair<state, int> badpair = std::make_pair(emptyst, badpair_min);
 
 int twice(state st) {
 	rep(i, 0, st.F - 1)
@@ -30,7 +30,7 @@ int twice2(state st) {
 	return 1;
 }
 
-pair<state, int> trans(state st, oxy ox) {
+std::pair<state, int> trans(state st, oxy ox) {
 	if (ox.x >= st.H || ox.x < -1 || ox.y >= st.F || ox.y < -2) {
 		return badpair;
 	}
@@ -58,7 +58,7 @@ pair<state, int> trans(state st, oxy ox) {
 
 			st.hands[st.H++] = cardcons(mn2cn(op.target), originalcost(op.target) - 2);
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -84,7 +84,7 @@ pair<state, int> trans(state st, oxy ox) {
 				}
 			}
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -110,7 +110,7 @@ pair<state, int> trans(state st, oxy ox) {
 				}
 			}
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -136,7 +136,7 @@ pair<state, int> trans(state st, oxy ox) {
 				}
 			}
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -149,10 +149,10 @@ pair<state, int> trans(state st, oxy ox) {
 			rmvh(st.hands, st.H, ox.x);
 			if (ox.y != -1) return badpair;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
-			st.mana = min(st.mana + 1, manalim);
+			st.mana = std::min(st.mana + 1, manalim);
 			st.auras[0] = 0;
 			st.auras[2] = st.auras[3];
 			st.auras[3] = 0;
@@ -163,7 +163,7 @@ pair<state, int> trans(state st, oxy ox) {
 			rmvh(st.hands, st.H, ox.x);
 			if (ox.y != -1) return badpair;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 1;
@@ -181,7 +181,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.hands[st.H++] = cardcons(mn2cn(st.fields[i].name), 1, 1);
 			}
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -204,7 +204,7 @@ pair<state, int> trans(state st, oxy ox) {
 			}
 			st.drawmn += 2;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -232,7 +232,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.drawmn += 1;
 			}
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[1] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[1] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -253,7 +253,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.fields[st.F++] = minioncons(cn2mn(op.name), h, h);
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -272,7 +272,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.fields[st.F++] = minioncons(cn2mn(op.name), h, h);
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -290,10 +290,10 @@ pair<state, int> trans(state st, oxy ox) {
 			}
 			st.fields[st.F++] = minioncons(cn2mn(op.name), h, h);
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
-			st.auras[1] = min(st.auras[1] + twi, alim[1]);
+			st.auras[1] = std::min(st.auras[1] + twi, alim[1]);
 			st.auras[2] = st.auras[3];
 			st.auras[3] = 0;
 			st.num++;
@@ -314,7 +314,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.hands[st.H++] = cardcons(fakecoin, 0);
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -337,7 +337,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.hands[i] = oppohands[i];
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -355,12 +355,12 @@ pair<state, int> trans(state st, oxy ox) {
 			}
 			st.fields[st.F++] = minioncons(cn2mn(op.name), h, h);
 
-			st.mana -= max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[1] = 0;
 			if (st.num) {
-				st.auras[2] = min(st.auras[3] + twi * 3, alim[2]);
+				st.auras[2] = std::min(st.auras[3] + twi * 3, alim[2]);
 				st.auras[3] = twi * 3;
 			}
 			else {
@@ -392,7 +392,7 @@ pair<state, int> trans(state st, oxy ox) {
 				st.drawmn += twi * 2;
 			}
 			
-			st.mana -= max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[1] = 0;
@@ -421,7 +421,7 @@ pair<state, int> trans(state st, oxy ox) {
 				return badpair;
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -451,7 +451,7 @@ pair<state, int> trans(state st, oxy ox) {
 				return badpair;
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -481,7 +481,7 @@ pair<state, int> trans(state st, oxy ox) {
 				return badpair;
 			}
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff + battlecrydebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -513,7 +513,7 @@ pair<state, int> trans(state st, oxy ox) {
 				return badpair;
 			}
 
-			st.mana -= max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[1] * 2 - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[1] = 0;
@@ -531,7 +531,7 @@ pair<state, int> trans(state st, oxy ox) {
 			}
 			st.fields[st.F++] = minioncons(cn2mn(op.name), h, h);
 
-			st.mana -= max(op.cost - st.auras[2] + miniondebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[2] + miniondebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -543,7 +543,7 @@ pair<state, int> trans(state st, oxy ox) {
 			rmvh(st.hands, st.H, ox.x);
 			if (ox.y != -1) return badpair;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -558,7 +558,7 @@ pair<state, int> trans(state st, oxy ox) {
 
 			if (st.hatk >= 0) st.hatk = 2;
 
-			st.mana -= max(op.cost - st.auras[2], 0);
+			st.mana -= std::max(op.cost - st.auras[2], 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[2] = st.auras[3];
@@ -570,7 +570,7 @@ pair<state, int> trans(state st, oxy ox) {
 			rmvh(st.hands, st.H, ox.x);
 			if (ox.y != -1) return badpair;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[1] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[1] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 
 			st.auras[0] = 0;
@@ -586,7 +586,7 @@ pair<state, int> trans(state st, oxy ox) {
 
 			if (st.hatk >= 0) st.hatk = 2;
 
-			st.mana -= max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
+			st.mana -= std::max(op.cost - st.auras[0] * 2 - st.auras[2] + spelldebuff, 0);
 			if (st.mana < 0) return badpair;
 			
 			st.auras[0] = 0;
@@ -616,5 +616,5 @@ pair<state, int> trans(state st, oxy ox) {
 		}
 	}
 	// TODO: 在这里计算伤害
-	return make_pair(st, dmg);
+	return std::make_pair(st, dmg);
 }

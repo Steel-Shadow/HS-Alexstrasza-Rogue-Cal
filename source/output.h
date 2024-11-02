@@ -2,4 +2,4 @@
 
 #include "basic.h"
 
-string output(opes o, int d, int u, ll t);
+std::string output(opes o, int d, int u, ll t);

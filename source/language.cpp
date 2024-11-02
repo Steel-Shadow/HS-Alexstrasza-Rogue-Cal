@@ -6,197 +6,197 @@
 
 lang _lang = CN;
 
-string shak_s() {
+std::string shak_s() {
 	return _lang == CN ? "鱼灵" : "Shak";
 }
-string shxk_s() {
+std::string shxk_s() {
 	return _lang == CN ? "沉鱼" : "Shxk";
 }
-string foxy_s() {
+std::string foxy_s() {
 	return _lang == CN ? "老千" : "Foxy";
 }
-string mail_s() {
+std::string mail_s() {
 	return _lang == CN ? "箱舞" : "Mail";
 }
-string scab_s() {
+std::string scab_s() {
 	return _lang == CN ? "刀油" : "Scab";
 }
-string tenw_s() {
+std::string tenw_s() {
 	return _lang == CN ? "腾武" : "Tenw";
 }
-string cast_s() {
+std::string cast_s() {
 	return _lang == CN ? "暗施" : "Cast";
 }
-string pill_s() {
+std::string pill_s() {
 	return _lang == CN ? "鬼灵" : "Pill";
 }
-string elvn_s() {
+std::string elvn_s() {
 	return _lang == CN ? "咏唱" : "Elvn";
 }
-string anym_s() {
+std::string anym_s() {
 	return _lang == CN ? "随从" : "AnyM";
 }
-string alexstrasza_s() {
+std::string alexstrasza_s() {
 	return _lang == CN ? "红龙" : "Alexstrasza";
 }
-string ETC_s() {
+std::string ETC_s() {
 	return _lang == CN ? "牛头" : "ETC";
 }
-string bounceAround_s() {
+std::string bounceAround_s() {
 	return _lang == CN ? "舞动" : "BounceAround";
 }
-string face_s() {
+std::string face_s() {
 	return _lang == CN ? "对面" : "Face";
 }
-string step_s() {
+std::string step_s() {
 	return _lang == CN ? "暗步" : "Step";
 }
-string stab_s() {
+std::string stab_s() {
 	return _lang == CN ? "背刺" : "Stab";
 }
-string si7_s() {
+std::string si7_s() {
 	return _lang == CN ? "要挟" : "SI7.";
 }
-string coin_s() {
+std::string coin_s() {
 	return _lang == CN ? "假币" : "Coin";
 }
-string prep_s() {
+std::string prep_s() {
 	return _lang == CN ? "伺机" : "Prep";
 }
-string pshn_s() {
+std::string pshn_s() {
 	return _lang == CN ? "幻药" : "Pshn";
 }
-string anys_s() {
+std::string anys_s() {
 	return _lang == CN ? "法术" : "Anys";
 }
-string trsh_s() {
+std::string trsh_s() {
 	return _lang == CN ? "垃圾" : "Trsh";
 }
-string anyw_s() {
+std::string anyw_s() {
 	return _lang == CN ? "武器" : "AnyW";
 }
-string cmbs_s() {
+std::string cmbs_s() {
 	return _lang == CN ? "连法" : "CmbS";
 }
-string bone_s() {
+std::string bone_s() {
 	return _lang == CN ? "齿刺" : "Bone";
 }
-string shrd_s() {
+std::string shrd_s() {
 	return _lang == CN ? "帷幕" : "Shrd";
 }
-string swin_s() {
+std::string swin_s() {
 	return _lang == CN ? "行骗" : "Swin";
 }
-string iuca_s() {
+std::string iuca_s() {
 	return _lang == CN ? "裂心" : "Iuca";
 }
-string bran_s() {
+std::string bran_s() {
 	return _lang == CN ? "铜须" : "Bran";
 }
-string zola_s() {
+std::string zola_s() {
 	return _lang == CN ? "佐拉" : "Zola";
 }
-string plag_s() {
+std::string plag_s() {
 	return _lang == CN ? "毒刀" : "Plag";
 }
-string clr_s() {
+std::string clr_s() {
 	return _lang == CN ? "清除" : "Clr.";
 }
-string mana_s() {
+std::string mana_s() {
 	return _lang == CN ? "水晶" : "Mana";
 }
-string calc_s() {
+std::string calc_s() {
 	return _lang == CN ? "计算" : "Calc";
 }
-string randc_s() {
+std::string randc_s() {
 	return _lang == CN ? "读算" : "R&C.";
 }
-string time_s() {
+std::string time_s() {
 	return _lang == CN ? "时限" : "Time";
 }
-string targ_s() {
+std::string targ_s() {
 	return _lang == CN ? "目标" : "Targ";
 }
-string adpt_s() {
+std::string adpt_s() {
 	return _lang == CN ? "适应" : "Adpt";
 }
-string chng_s() {
+std::string chng_s() {
 	return _lang == CN ? "修改" : "Chng";
 }
-string read_s() {
+std::string read_s() {
 	return _lang == CN ? "读取" : "Read";
 }
-string back_s() {
+std::string back_s() {
 	return _lang == CN ? "回退" : "Back";
 }
-string stax_s() {
+std::string stax_s() {
 	return _lang == CN ? "法术加费" : "AnySTax.";
 }
-string mtax_s() {
+std::string mtax_s() {
 	return _lang == CN ? "随从加费" : "AnyMTax,";
 }
-string btax_s() {
+std::string btax_s() {
 	return _lang == CN ? "战吼加费" : "BcryTax.";
 }
-string able_s() {
+std::string able_s() {
 	return _lang == CN ? "背刺可用" : "StabAble";
 }
-string able2_s() {
+std::string able2_s() {
 	return _lang == CN ? "齿刺可用" : "BoneAble";
 }
-string plyd_s() {
+std::string plyd_s() {
 	return _lang == CN ? "已用牌数" : "CrdsPlyd";
 }
-string samp_s() {
+std::string samp_s() {
 	return _lang == CN ? "查看样例" : "ViewSamp";
 }
-string cl_s() {
+std::string cl_s() {
 	return _lang == CN ? "清" : "Cl";
 }
-string a0_s() {
+std::string a0_s() {
 	return _lang == CN ? "伺机层数" : "PrepDisc";
 }
-string a1_s() {
+std::string a1_s() {
 	return _lang == CN ? "老千层数" : "FoxyDisc";
 }
-string a2_s() {
+std::string a2_s() {
 	return _lang == CN ? "下一减费" : "Nxt1Disc";
 }
-string a3_s() {
+std::string a3_s() {
 	return _lang == CN ? "下二减费" : "Nxt2Disc";
 }
-string hint_s() {
+std::string hint_s() {
 	return _lang == CN ? "请输入炉石传说本地路径（回车确认）" : "Please enter the local path of HS:";
 }
-string calcing_s() {
+std::string calcing_s() {
 	return _lang == CN ? "(正在计算)" : "(Calcing.)";
 }
-string exhaust_s() {
+std::string exhaust_s() {
 	return _lang == CN ? "(穷尽掐断)" : "(Exhaust.)";
 }
-string targrch_s() {
+std::string targrch_s() {
 	return _lang == CN ? "(达标掐断)" : "(TargRch.)";
 }
-string timerch_s() {
+std::string timerch_s() {
 	return _lang == CN ? "(时限掐断)" : "(TimeRch.)";
 }
-string iceblock_s() {
+std::string iceblock_s() {
 	return _lang == CN ? "破冰需要" : "IceBlock";
 }
-string heroattk_s() {
+std::string heroattk_s() {
 	return _lang == CN ? "英雄攻击" : "HeroAttk";
 }
-string demi_s() {
+std::string demi_s() {
 	return _lang == CN ? "殒命" : "Demi";
 }
-string smal_s() {
+std::string smal_s() {
 	return "><";
 }
-string larg_s() {
+std::string larg_s() {
 	return "<>";
 }
 
-string mn2str(minionname a) {
+std::string mn2str(minionname a) {
 	switch (a) {
 		case sharkspirit_m: {
 			return shak_s();
@@ -277,7 +277,7 @@ string mn2str(minionname a) {
 		}
 	}
 }
-string cn2str(cardname a) {
+std::string cn2str(cardname a) {
 	switch (a) {
 		case sharkspirit: {
 			return shak_s();

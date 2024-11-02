@@ -2,6 +2,6 @@
 
 #include "basic.h"
 
-cardname cid2cn(string s);
+cardname cid2cn(std::string s);
 
-state autoread(string _s, int& _tar, int& countslimit);
+state autoread(std::string _s, int& _tar, int& countslimit);
