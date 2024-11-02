@@ -1,6 +1,8 @@
 #include "auto.h"
 #include "deck.h"
 
+#include <fstream>
+
 int char2u6(char c) {
     if (c >= 'A' && c <= 'Z') {
         return c - 'A';
@@ -111,7 +113,8 @@ void parsedeck(std::string _s) {
     std::cin.clear();
     //重置输入流，防止无法读取 
 
-    FILE* f = freopen((_s + "\\Logs\\decks.log").c_str(), "r", stdin);
+    fs::path logFilePath = findNewestDirectory(_s);
+    std::ifstream logFile(logFilePath / "Decks.log");
 
     std::string line;
     std::string code;

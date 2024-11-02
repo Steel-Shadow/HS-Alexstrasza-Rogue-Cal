@@ -385,7 +385,7 @@ void drawdom(domain a, bool sl) {
 			break;
 		}
 		case lk: {
-			textr(r, txc, a.name + "\\Logs\\power.log");
+			textr(r, txc, a.name + "\\...");
 			break;
 		}
 	}
