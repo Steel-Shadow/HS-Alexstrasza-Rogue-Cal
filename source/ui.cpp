@@ -303,7 +303,10 @@ cardname str2cn(std::string s) {
 	if (s == anyw_s()) return anyweapon;
 	if (s == cmbs_s()) return anycombospell;
 	if (s == trsh_s()) return invalid;
-	if (s == demi_s()) return demise;
+
+	if (s == alexstrasza_s()) return alexstrasza;
+	if (s == bounceAround_s()) return bounceAround;
+	if (s == ETC_s()) return ETC;
  	return invalid;
 }
 

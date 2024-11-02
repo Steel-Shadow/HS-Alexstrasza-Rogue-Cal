@@ -123,8 +123,6 @@ void parsedeck(std::string _s) {
         code = line;
     }
 
-    fclose(stdin);
-
     auto p = code.find("A");
     if (p == -1) return;
 

@@ -43,7 +43,7 @@ cardname cid2cn(std::string s)
     if (s == "DMF_515") return swindle;
     if (s == "WC_016") return shroud;
     if (s == "REV_825") return anyspell;
-    if (s == "LOOT_214") return anyspell;
+    if (s == "LOOT_214") return evasion;
     if (s == "DMF_512") return anyspell;
     if (s == "LOOT_204") return anyspell;
     if (s == "RLK_567") return demise;
@@ -254,8 +254,6 @@ state autoread(std::string _s, int& _tar, int& countslimit)
     }
 
     countslimit = counts;
-
-    fclose(stdin);
 
     //将唯一有效段存至valids，以下仅对这段进行读取
 

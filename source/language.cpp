@@ -66,6 +66,10 @@ std::string prep_s() {
 std::string pshn_s() {
 	return _lang == CN ? "ª√“©" : "Pshn";
 }
+std::string evasion_s() {
+    return _lang == CN ? "…¡±‹" : "Evasion";
+}
+
 std::string anys_s() {
 	return _lang == CN ? "∑® ı" : "Anys";
 }
@@ -349,6 +353,10 @@ std::string cn2str(cardname a) {
 		case illusionpotion: {
 			return pshn_s();
 			break;
+		}
+	    case evasion: {
+		    return evasion_s();
+		    break;
 		}
 		case anyspell: {
 			return anys_s();
