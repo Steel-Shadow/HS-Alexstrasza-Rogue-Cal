@@ -49,3 +49,4 @@ target_include_directories(${PROJECT_NAME}
 target_link_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/lib")
 target_link_libraries(${PROJECT_NAME} graphics gdi32 gdiplus)
 
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

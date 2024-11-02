@@ -102,7 +102,7 @@ rect _start_cn = rectcons(1040, 560, 1160, 640);
 rect _start_en = rectcons(1160, 560, 1280, 640);
 
 void drawatt() {
-	textr(_all, txc, "你已经阅读过https://github.com/Moiezen/HS_SPR_CAL/README.md，并且该HSSPRCAL.exe是直接获取的最新版本");
+	textr(_all, txc, "你已经阅读过https://github.com/Steel-Shadow/HS-Alexstrasza-Rogue-Cal，并且该HSSPRCAL.exe是直接获取的最新版本");
 
 	barr(_start_cn, bdc);
 	barr(cutedge(_start_cn, 1), bgc);
