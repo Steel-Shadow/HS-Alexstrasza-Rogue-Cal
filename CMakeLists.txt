@@ -49,4 +49,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/lib")
 target_link_libraries(${PROJECT_NAME} graphics gdi32 gdiplus)
 
+# 静态链接 Mingw 标准库，避免用户报错缺乏 dll
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
+
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
