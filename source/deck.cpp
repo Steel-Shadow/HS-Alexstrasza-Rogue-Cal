@@ -23,9 +23,9 @@ int char2u6(char c) {
 }
 
 std::string plainu6(int x) {
-    std::string s = "";
+    std::string s;
     rep(i, 0, 5) {
-        s = char(x % 2 + 48) + s;
+        s = static_cast<char>(x % 2 + 48) + s;
         x /= 2;
     }
     return s;
@@ -72,7 +72,7 @@ std::string dbfid2cid(int x) {
 
 int nums[99], nn;
 
-std::vector<std::string> deckcode2cids(std::string s) {
+std::vector<std::string> deckcode2cids(const std::string &s) {
     std::vector<std::string> cids;
     cids.clear();
 

@@ -45,7 +45,7 @@ void rectr(rect a, color_t b) {
     rectangle(a.x1, a.y1, a.x2, a.y2);
 }
 
-void textr(rect a, color_t b, std::string c) {
+void textr(rect a, color_t b, const std::string &c) {
     setc(b);
     sett(CENTER_TEXT, CENTER_TEXT);
     outtextxy((a.x1 + a.x2) / 2, (a.y1 + a.y2) / 2, c.c_str());
@@ -85,7 +85,7 @@ struct domain {
     int lim;
 };
 
-domain domaincons(rect a, domt b, std::string c, int d, int e, int f, int g) {
+domain domaincons(rect a, domt b, const std::string &c, int d, int e, int f, int g) {
     domain dom;
     dom.r = a;
     dom.type = b;
@@ -99,7 +99,7 @@ domain domaincons(rect a, domt b, std::string c, int d, int e, int f, int g) {
 
 domain nodomain = domaincons(norect, nodomt, "", -1, -1, -1, -1);
 
-bool indom(int x, int y, domain a) {
+bool indom(int x, int y, const domain &a) {
     return inrect(x, y, a.r);
 }
 
@@ -208,7 +208,7 @@ std::string getdftlk() {
     return s;
 }
 
-void savedftlk(std::string s) {
+void savedftlk(const std::string &s) {
     FILE *f = freopen("dft.txt", "w", stdout);
 
     printf("%s\n", s.c_str());
@@ -355,7 +355,7 @@ int if_small = 0;
 //=0 when large
 //=1 when small
 
-void drawdom(domain a, bool sl) {
+void drawdom(const domain &a, bool sl) {
     rect r = a.r;
     if (if_small == 1) {
         r = movedxdy(r, -(W - W_small), 0);
@@ -424,7 +424,7 @@ void drawdom(domain a, bool sl) {
     }
 }
 
-void drawfixdom(domain a, int x = 0) {
+void drawfixdom(const domain &a, int x = 0) {
     drawdom(a, x);
     for (auto &i: doms) {
         if (a.id == i.id) {
@@ -436,7 +436,7 @@ void drawfixdom(domain a, int x = 0) {
 
 void loaddoms() {
     for (auto i: doms) {
-        drawdom(i, 0);
+        drawdom(i, false);
     }
     selected = nodomain;
     inputing = false;
@@ -708,13 +708,12 @@ void loadauto(int normalwhen0 = 0) {
     int _tar = 999;
     int _countslimit = normalwhen0 == 0 ? 1 << 30 : countslimitsaved - 1;
     state st = autoRead(id2dom(lkdomid).name, _tar, _countslimit);
-    domain tmp;
 
     countslimitsaved = _countslimit;
 
     st2doms(st);
 
-    tmp = id2dom(tardomid);
+    domain tmp = id2dom(tardomid);
     if (tmp.x != 999) {
         tmp.x = _tar;
         drawfixdom(tmp);
@@ -723,11 +722,10 @@ void loadauto(int normalwhen0 = 0) {
 
 void loadsample() {
     state st = initst();
-    domain tmp;
 
     st2doms(st);
 
-    tmp = id2dom(tlimdomid);
+    domain tmp = id2dom(tlimdomid);
     tmp.x = 999;
     drawfixdom(tmp);
 
@@ -736,7 +734,7 @@ void loadsample() {
     drawfixdom(tmp);
 }
 
-void touch(domain toselect) {
+void touch(const domain& toselect) {
     rect r = toselect.r;
     rectr(cutedge(r, 3), slc);
     delay_ms(100);
@@ -754,13 +752,13 @@ void touch(domain toselect) {
             if (selected.id == toselect.id) {
                 inputing = false;
 
-                drawdom(selected, 0);
+                drawdom(selected, false);
                 selected = nodomain;
             } else {
                 inputing = false;
 
-                drawdom(selected, 0);
-                drawdom(toselect, 1);
+                drawdom(selected, false);
+                drawdom(toselect, true);
                 selected = toselect;
             }
             break;

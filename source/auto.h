@@ -3,7 +3,7 @@
 #include "basic.h"
 #include <filesystem>
 
-cardname cid2cn(std::string s);
+cardname cid2cn(const std::string &s);
 
 state autoRead(std::string _s, int& _tar, int& countsLimit);
 

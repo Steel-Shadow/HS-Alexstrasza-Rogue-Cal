@@ -6,14 +6,14 @@
 
 #include <fstream>
 
-int cid2secret(std::string s) {
+int cid2secret(const std::string &s) {
     if (s == "REV_825") return 0;
     if (s == "LOOT_214") return 1;
     if (s == "LOOT_204") return 2;
     return -1;
 }
 
-cardname cid2cn(std::string s) {
+cardname cid2cn(const std::string &s) {
     if (s.find("EX1_144") != -1) return shadowstep;
     if (s.find("CS2_072") != -1) return backstab;
     if (s == "SW_412") return extortion;
@@ -90,8 +90,7 @@ void updid(int x) {
         return;
     }
 
-    if (mycid == -1 && id2tag2stamp_value[x]["ZONE"].second == "HAND" && id2tag2stamp_value[x]["CardID"].second.
-                                                                                                         length() > 0) {
+    if (mycid == -1 && id2tag2stamp_value[x]["ZONE"].second == "HAND" && !id2tag2stamp_value[x]["CardID"].second.empty()) {
         mycid = id2tag2stamp_value[x]["CONTROLLER"].second[0] - 48;
 
         rep(i, 2, 3) {
@@ -146,10 +145,10 @@ int updcurid(std::string s, int x) {
         if (s.find(idhandle[i] + Gname) != -1) {
             return Gid;
         }
-        if (myname.length() > 0 && s.find(idhandle[i] + myname) != -1) {
+        if (!myname.empty() && s.find(idhandle[i] + myname) != -1) {
             return myid;
         }
-        if (yourname.length() > 0 && s.find(idhandle[i] + yourname) != -1) {
+        if (!yourname.empty() && s.find(idhandle[i] + yourname) != -1) {
             return yourid;
         }
 
@@ -566,10 +565,10 @@ state autoRead(std::string _s, int &_tar, int &countsLimit) {
 
     int truemn = 0;
     rep(i, 0, deckmn - 1) {
-        bool flag = 0;
+        bool flag = false;
         rep(j, 0, nidn - 1) {
             if (deckm[i] == notindeck[j]) {
-                flag = 1;
+                flag = true;
                 notindeck[j] = nul;
                 break;
             }

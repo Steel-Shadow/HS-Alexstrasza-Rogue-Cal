@@ -137,9 +137,9 @@ struct ope {
 
 ope opecons(int a, cardname b, minionname c);
 
-ope exact(state a, oxy b);
+ope exact(const state &a, const oxy &b);
 
-ope exact4f(state a, oxy b);
+ope exact4f(const state &a, const oxy &b);
 
 struct oxys {
     std::vector<oxy> os;

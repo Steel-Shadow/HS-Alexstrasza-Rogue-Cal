@@ -2,14 +2,13 @@
 
 int getrand(int count, ...) {
 	va_list v;
-	int valuet;
-	std::vector<int> value;
+    std::vector<int> value;
 	int sum = 0;
 
 	va_start(v, count);
 
 	while (count--) {
-		valuet = va_arg(v, int);
+		int valuet = va_arg(v, int);
 		value.push_back(valuet);
 		sum += valuet;
 	}

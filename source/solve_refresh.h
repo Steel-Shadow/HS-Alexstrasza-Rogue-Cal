@@ -10,8 +10,8 @@ struct syn {
 	opes os;
 	//²Ù×÷ÐòÁÐ 
 };
-syn syncons(std::pair<state, int> a, double b, opes c);
-bool operator<(syn a, syn b);
+syn syncons(const std::pair<state, int> &a, double b, const opes &c);
+bool operator<(const syn &a, const syn &b);
 
 const double sumbasic = 1.;
 const double boundbasic = 10.;

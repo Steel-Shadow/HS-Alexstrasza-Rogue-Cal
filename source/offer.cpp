@@ -2,7 +2,7 @@
 
 #include <functional>
 
-bool notcoinopt4demise(state a) {
+bool notcoinopt4demise(const state &a) {
     //殒命暗影对于硬币优先的附加逻辑：
     //如果有殒命暗影，且殒命暗影当前复制的不是any/coin，则硬币优先不直接成立
     //这是为了保护殒命暗影当前复制的法术，在此保护情形下，其他常规法术也不应当被打出
@@ -24,7 +24,7 @@ bool notcoinopt4demise(state a) {
     return false;
 }
 
-bool coinopt(state a, oxy &b) {
+bool coinopt(const state &a, oxy &b) {
     //硬币优先逻辑：有0费硬币，不受加减费光环影响，当前费用小于上限，不需要破冰
     if (iceblockif == 1) return false;
     if (a.mana < manalim && a.auras[2] == 0 && a.auras[3] == 0 && a.auras[0] == 0 && spelldebuff == 0) {

@@ -10,7 +10,6 @@ struct syn {
 	opes os;
 	//²Ù×÷ÐòÁÐ 
 };
-syn syncons(std::pair<state, int> a, double b, opes c);
 bool operator<(syn a, syn b);
 
 const double sumbasic = 1.;

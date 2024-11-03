@@ -16,7 +16,7 @@ void rmvf(minion *a, int &n, int x) {
 
 std::pair<state, int> badpair = std::make_pair(emptyst, badpair_min);
 
-int twice(state st) {
+int twice(const state &st) {
     rep(i, 0, st.F - 1)
         if (st.fields[i].name == sharkspirit_m) {
             return 2;

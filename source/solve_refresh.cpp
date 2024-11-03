@@ -5,7 +5,7 @@
 #include "solve.h"
 #include "ui.h"
 
-syn syncons(std::pair<state, int> a, double b, opes c) {
+syn syncons(const std::pair<state, int> &a, double b, const opes &c) {
     syn d;
     d.pa = a;
     d.pri = b;
@@ -13,7 +13,7 @@ syn syncons(std::pair<state, int> a, double b, opes c) {
     return d;
 }
 
-bool operator<(syn a, syn b) {
+bool operator<(const syn &a, const syn &b) {
     return a.pri < b.pri;
 }
 
@@ -180,7 +180,7 @@ void solve(syn q) {
         sums.clear();
         allsum = 0;
 
-        for (auto i: o0.os) {
+        for (const auto& i: o0.os) {
             iseq[isn++] = o2i(exact4f(q.pa.first, i));
 
             sum = sumbasic;
@@ -195,7 +195,7 @@ void solve(syn q) {
 
     int j = 0;
     int alreadyvalids = 0;
-    for (auto i: o0.os) {
+    for (const auto& i: o0.os) {
         opes os = q.os;
         os.os.push_back(exact(q.pa.first, i));
 
