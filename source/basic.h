@@ -27,6 +27,7 @@ enum cardname {
     bounceAround, // 舞动全场（ft.迦罗娜）
 
     evasion, // 闪避
+    fishin, // 垂钓时光
 };
 
 enum minionname {
@@ -118,7 +119,6 @@ struct oxy {
     //y=-2 enemyhero
     //y=-3 heroattack to enemyhero
 
-    // TODO: 目前不支持修改牛头人内的卡，固定为红龙、舞动全场、幻觉药水
     std::vector<cardname> etcChoose;
 };
 

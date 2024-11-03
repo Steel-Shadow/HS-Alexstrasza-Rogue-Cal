@@ -19,6 +19,7 @@ std::string cast_s();
 std::string pill_s();
 std::string elvn_s();
 std::string anym_s();
+std::string fishin_s();
 std::string alexstrasza_s();
 std::string ETC_s();
 std::string bounceAround_s();

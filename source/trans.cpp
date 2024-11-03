@@ -241,6 +241,30 @@ std::pair<state, int> trans(state st, oxy ox) {
             st.num++;
             break;
         }
+        case fishin: {
+            rmvh(st.hands, st.H, ox.x);
+            if (ox.y != -1) return badpair;
+
+            if (st.num) {
+                if (st.drawmn < deckmn && st.drawmn + 1 >= deckmn) {
+                    if (st.H + deckmn <= hlim)
+                        //treat as never draw if mill some
+                        rep(i, 0, deckmn - 1) {
+                            if (st.H >= hlim) break;
+                            st.hands[st.H++] = cardcons(mn2cn(deckm[i]), originalcost(deckm[i]));
+                        }
+                }
+                st.drawmn += 1;
+            }
+            st.mana -= std::max(cost - st.auras[0] * 2 - st.auras[1] * 2 - st.auras[2] + spelldebuff, 0);
+            if (st.mana < 0) return badpair;
+
+            st.auras[0] = 0;
+            st.auras[2] = st.auras[3];
+            st.auras[3] = 0;
+            st.num++;
+            break;
+        }
         case sharkspirit: {
             int h = st.hands[ox.x].health;
             rmvh(st.hands, st.H, ox.x);

@@ -171,6 +171,7 @@ bool normalspell(cardname a) {
         case swindle:
         case madnessplague:
         case bounceAround:
+        case fishin:
         case anyspell:
         case evasion:
         case anycombospell: {
@@ -302,6 +303,9 @@ int originalcost_c(cardname a) {
             }
             case bounceAround: {
                 return 3;
+            }
+            case fishin: {
+                return 1;
             }
             case anyweapon: {
                 return 1;

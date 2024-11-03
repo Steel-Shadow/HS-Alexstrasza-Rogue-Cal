@@ -43,7 +43,10 @@ std::string ETC_s() {
 	return _lang == CN ? "牛头" : "ETC";
 }
 std::string bounceAround_s() {
-	return _lang == CN ? "舞动" : "BounceAround";
+    return _lang == CN ? "舞动" : "BounceAround";
+}
+std::string fishin_s() {
+    return _lang == CN ? "垂钓" : "fishin";
 }
 std::string face_s() {
 	return _lang == CN ? "对面" : "Face";
@@ -385,6 +388,9 @@ std::string cn2str(cardname a) {
 		}
 		case demise: {
 			return demi_s();
+		}
+	    case fishin: {
+		    return fishin_s();
 		}
 		case alexstrasza: {
 			return alexstrasza_s();

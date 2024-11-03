@@ -5,7 +5,7 @@
 
 cardname cid2cn(std::string s);
 
-state autoread(std::string _s, int& _tar, int& countslimit);
+state autoRead(std::string _s, int& _tar, int& countsLimit);
 
 namespace fs = std::filesystem;
 

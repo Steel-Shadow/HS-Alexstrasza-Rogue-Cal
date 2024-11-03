@@ -147,7 +147,7 @@ oxys offer(state a) {
         }
         if (na == backstab || na == extortion || na == bonespike
             || na == fakecoin || na == preparation || na == illusionpotion || na == shroud || na == swindle || na == madnessplague
-            || na == bounceAround
+            || na == bounceAround || na == fishin
             || na == redsmoke || na == shadowcaster || na == zolag
             || na == mailboxdancer || na == foxyfraud || na == cutterbutter || na == elvensinger || na == sharkspirit || na == illucia || na == brann
             || na == anyminion || na == anyspell || na == anyweapon || na == anycombospell) {
